@@ -9,8 +9,8 @@
         <h4>Die Tagesordnung <br>und Protokoll-Verwaltung</h4>
       </div>
       <div class="centered-bottom">
-        <a href="https://app.tageso.de/#/login" class="btn btn-success">Login</a>
-        <a href="https://app.tageso.de/#/register" class="btn btn-secondary">Register</a>
+        <a v-bind:href="login" v-if="login" class="btn btn-success">Login</a>
+        <a v-bind:href="register" v-if="register" class="btn btn-secondary">Register</a>
       </div>
     </div>
     <div class="tbox">
@@ -83,7 +83,12 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
+    login: "",
+      register: ""
+  },
+  mounted: function() {
+      this.login = process.env.VUE_APP_LOGIN_URL
+      this.register = process.env.VUE_APP_REGISTER_URL
   }
 }
 </script>
